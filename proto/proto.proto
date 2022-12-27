@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "https://github.com/MalteBlackN/27dec2;chat";
+
+
+
+service ChatService {
+    rpc send (chatMessage) returns (ackMessage);
+    rpc join (chatMessage) returns (stream chatMessage);
+}
+
+message chatMessage {
+    string message = 1;
+    int32 userId = 2;
+}
+
+message ackMessage {
+    bool send = 1;
+}
